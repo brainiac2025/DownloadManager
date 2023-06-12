@@ -21,7 +21,7 @@ public class Main  extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                actionExit();
+                exitAction();
             }
         });
 
@@ -34,7 +34,7 @@ public class Main  extends JFrame {
         myMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                actionExit();
+                exitAction();
             }
         });
 
@@ -94,8 +94,49 @@ public class Main  extends JFrame {
                 actionPause();
             }
         });
+        pauseButton.setEnabled(false);
+        buttonPanel.add(pauseButton);
 
+        resumeButton= new JButton("Resume");
+        resumeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionResume();
+            }
+        });
+        resumeButton.setEnabled(false);
+        buttonPanel.add(resumeButton);
 
+        cancelButton=new JButton("Cancel");
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionnCancel();
+            }
+        });
+        cancelButton.setEnabled(false);
+        buttonPanel.add(cancelButton);
+
+        clearButton=new JButton("Clear");
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionClear()
+            }
+        });
+        clearButton.setEnabled(false);
+        buttonPanel.add(clearButton);
+
+        //adding panel to the display
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(mypanel, BorderLayout.NORTH);
+        getContentPane().add(downloadsPanel, BorderLayout.CENTER);
+        getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+
+    }
+
+    private void exitAction(){
+        System.exit(0);
     }
     public static void main(String[] args) {
 
